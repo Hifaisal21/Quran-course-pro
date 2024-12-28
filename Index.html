@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Learning Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        .motivational {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .ayat {
+            background: #f0f8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+            text-align: left;
+            border-radius: 5px;
+        }
+        .ayat h2 {
+            color: #2980b9;
+        }
+        .info {
+            background: #dff9fb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        .rating {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f7e6ff;
+            border-radius: 5px;
+            border-left: 5px solid #8e44ad;
+        }
+        .rating h2 {
+            color: #8e44ad;
+        }
+        .stars {
+            color: #f39c12;
+            font-size: 1.5rem;
+        }
+        .timer {
+            margin: 20px 0;
+            font-size: 1.5rem;
+            color: #e74c3c;
+        }
+        .button-container {
+            margin: 20px 0;
+        }
+        .button {
+            padding: 15px 30px;
+            background: #28a745;
+            color: #fff;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: #218838;
+        }
+        .views {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>क़ुरान शरीफ सीखें और सवाब कमाएं</h1>
+
+        <div class="motivational">
+            <p>क़ुरान सीखना और सिखाना हर मुसलमान का फर्ज़ है।</p>
+            <p>अल्लाह के रसूल (ﷺ) ने फरमाया: "तुममें सबसे अच्छा वो है जो क़ुरान सीखे और दूसरों को सिखाए।"</p>
+            <p><strong>जो क़ुरान नहीं सिखता:</strong> उसकी क़ब्र अंधेरी होगी और हश्र के मैदान में वह अज़ाब का सामना करेगा।</p>
+        </div>
+
+        <div class="ayat">
+            <h2>क़ुरान की आयत:</h2>
+            <p><strong>وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا</strong></p>
+            <p>"और क़ुरान को अच्छी तरह से पढ़ो।" (सूरह अल-मुज़म्मिल: 4)</p>
+        </div>
+
+        <div class="info">
+            <p><strong>हमारे पास 5000 से अधिक बच्चे क़ुरान शरीफ सीख चुके हैं।</strong> अब आपकी बारी है।</p>
+        </div>
+
+        <div class="rating">
+            <h2>Students' Feedback:</h2>
+            <p>हमारे कोर्स को <span class="stars">★★★★☆</span> (4.5 स्टार) की रेटिंग मिली है।</p>
+            <p>1000 बच्चों ने कोर्स की सराहना की है।</p>
+        </div>
+
+        <div class="timer">
+            <p>शुरू करने के लिए आपके पास केवल <span id="timer">1:00:00</span> का समय बचा है!</p>
+        </div>
+
+        <div class="button-container">
+            <a class="button" id="start-btn" href="https://wa.me/7300655957?text=मैं%20क़ुरान%20सिखाने%20के%20लिए%20तैयार%20हूँ।" target="_blank">Start Quran Learning</a>
+        </div>
+
+        <div class="views">
+            <p><strong>Views:</strong> <span id="views-count">2000</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Timer functionality
+        let time = 3600; // 1 hour in seconds
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const hours = Math.floor(time / 3600);
+            const minutes = Math.floor((time % 3600) / 60);
+            const seconds = time % 60;
+
+            timerElement.textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (time > 0) {
+                time--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        updateTimer();
+
+        // Views count functionality
+        const viewsCountElement = document.getElementById('views-count');
+        const localStorageKey = 'viewsCount';
+
+        // Initialize views count to 2000 (fixed) or retrieve it from localStorage
+        let views = localStorage.getItem(localStorageKey) ? parseInt(localStorage.getItem(localStorageKey)) : 2000;
+        viewsCountElement.textContent = views;
+
+        // Increment views on button click
+        document.getElementById('start-btn').addEventListener('click', function() {
+            views++;
+            viewsCountElement.textContent = views;
+            localStorage.setItem(localStorageKey, views); // Save to local storage
+        });
+    </script>
+</body>
+</html>
